@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Digital Services</title>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #030712;
+            --card-bg: rgba(15, 23, 42, 0.55);
+            --card-border: rgba(56, 189, 248, 0.25);
+            --text-gold: #fbbf24;
+            --neon-blue: #38bdf8;
+            --neon-purple: #a855f7;
+            --support-green: #22c55e;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: #f3f4f6;
+            min-height: 100vh;
+            padding: 30px 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Ambient Glowing Background Orbs */
+        .glow-orb-1 {
+            position: absolute;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.25) 0%, transparent 70%);
+            filter: blur(60px);
+            z-index: -1;
+            animation: pulseGlow 6s infinite alternate;
+        }
+
+        .glow-orb-2 {
+            position: absolute;
+            bottom: 50px;
+            right: -100px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.2) 0%, transparent 70%);
+            filter: blur(60px);
+            z-index: -1;
+        }
+
+        @keyframes pulseGlow {
+            0% { opacity: 0.5; transform: translateX(-50%) scale(0.9); }
+            100% { opacity: 1; transform: translateX(-50%) scale(1.1); }
+        }
+
+        .container {
+            max-width: 1100px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffffff 0%, var(--neon-blue) 50%, var(--neon-purple) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 18px;
+            filter: drop-shadow(0 0 25px rgba(56, 189, 248, 0.3));
+        }
+
+        .badges-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid var(--neon-blue);
+            backdrop-filter: blur(12px);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: #ffffff;
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.25);
+        }
+
+        .badge-green {
+            border-color: var(--support-green);
+            box-shadow: 0 0 15px rgba(34, 197, 94, 0.25);
+            color: #4ade80;
+        }
+
+        /* Grid Layout */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 22px;
+            margin-bottom: 50px;
+        }
+
+        /* Glassmorphism Lighting Card */
+        .glass-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-radius: 20px;
+            padding: 24px 18px;
+            text-align: center;
+            position: relative;
+            transition: all 0.35s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: 0.5s;
+        }
+
+        .glass-card:hover::before {
+            left: 100%;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-7px);
+            border-color: var(--neon-blue);
+            box-shadow: 0 0 25px rgba(56, 189, 248, 0.4), inset 0 0 15px rgba(56, 189, 248, 0.1);
+        }
+
+        .card-number {
+            position: absolute;
+            top: 14px;
+            left: 16px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.35);
+        }
+
+        .card-icon {
+            font-size: 2.4rem;
+            color: var(--neon-blue);
+            margin-top: 10px;
+            margin-bottom: 12px;
+            text-shadow: 0 0 12px rgba(56, 189, 248, 0.5);
+        }
+
+        .glass-card h3 {
+            font-size: 1.15rem;
+            color: #ffffff;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .price-tag {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--text-gold);
+            background: rgba(0, 0, 0, 0.4);
+            padding: 6px 14px;
+            border-radius: 10px;
+            display: inline-block;
+            border: 1px solid rgba(251, 191, 36, 0.3);
+            box-shadow: 0 0 10px rgba(251, 191, 36, 0.1);
+        }
+
+        /* Bottom Footer Call to Action */
+        .footer-cta {
+            background: rgba(15, 23, 42, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 35px 20px;
+            text-align: center;
+            width: 100%;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 20px rgba(168, 85, 247, 0.15);
+        }
+
+        .footer-cta h2 {
+            font-size: 1.5rem;
+            color: var(--text-gold);
+            letter-spacing: 1.5px;
+            margin-bottom: 10px;
+        }
+
+        .support-text {
+            color: #4ade80;
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, #25d366, #128c7e);
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: bold;
+            padding: 16px 32px;
+            border-radius: 50px;
+            box-shadow: 0 0 25px rgba(37, 211, 102, 0.4);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .contact-btn:hover {
+            transform: scale(1.04);
+            box-shadow: 0 0 35px rgba(37, 211, 102, 0.7);
+        }
+
+        /* Modal Overlay & Popup Window */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(3, 7, 18, 0.85);
+            backdrop-filter: blur(12px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-box {
+            background: rgba(15, 23, 42, 0.95);
+            border: 1px solid var(--neon-blue);
+            box-shadow: 0 0 40px rgba(56, 189, 248, 0.3);
+            border-radius: 24px;
+            padding: 35px 25px;
+            max-width: 450px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+            transform: scale(0.8);
+            transition: all 0.3s ease;
+        }
+
+        .modal-overlay.active .modal-box {
+            transform: scale(1);
+        }
+
+        .modal-icon {
+            font-size: 3rem;
+            color: #4ade80;
+            margin-bottom: 15px;
+            animation: bounce 1s infinite alternate;
+        }
+
+        @keyframes bounce {
+            from { transform: translateY(0); }
+            to { transform: translateY(-8px); }
+        }
+
+        .modal-box h2 {
+            font-size: 1.6rem;
+            color: #ffffff;
+            margin-bottom: 8px;
+        }
+
+        .modal-box p {
+            color: #9ca3af;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+
+        .selected-service-info {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px dashed var(--neon-blue);
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+        }
+
+        .selected-service-info h4 {
+            color: var(--text-gold);
+            font-size: 1.1rem;
+        }
+
+        .modal-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .btn-proceed {
+            background: linear-gradient(135deg, #25d366, #128c7e);
+            color: #fff;
+            text-decoration: none;
+            padding: 14px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.05rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            box-shadow: 0 0 20px rgba(37, 211, 102, 0.4);
+        }
+
+        .btn-close {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #9ca3af;
+            padding: 10px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .btn-close:hover {
+            color: #fff;
+            border-color: #fff;
+        }
+
+        @media (max-width: 600px) {
+            header h1 { font-size: 1.7rem; }
+            .services-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+            .glass-card { padding: 18px 12px; }
+            .card-icon { font-size: 2rem; }
+            .glass-card h3 { font-size: 0.95rem; }
+            .price-tag { font-size: 0.85rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="glow-orb-1"></div>
+<div class="glow-orb-2"></div>
+
+<div class="container">
+    <!-- Header -->
+    <header>
+        <h1>Apne Digital Business Ko Boost Karen!</h1>
+        <div class="badges-container">
+            <div class="badge">
+                <i class="fa-solid fa-users"></i> 10,000+ HAPPY CUSTOMERS
+            </div>
+            <div class="badge badge-green">
+                <i class="fa-solid fa-headset"></i> 24/7 INSTANT SUPPORT
+            </div>
+        </div>
+    </header>
+
+    <!-- Services Grid -->
+    <div class="services-grid">
+        
+        <div class="glass-card" onclick="openModal('WhatsApp Account', 'Enquiry Now')">
+            <span class="card-number">01</span>
+            <div class="card-icon"><i class="fa-brands fa-whatsapp"></i></div>
+            <h3>WhatsApp Account</h3>
+            <div class="price-tag">Enquiry Now</div>
+        </div>
+
+        <div class="glass-card" onclick="openModal('Telegram Account', 'Enquiry Now')">
+            <span class="card-number">02</span>
+            <div class="card-icon"><i class="fa-brands fa-telegram"></i></div>
+            <h3>Telegram Account</h3>
+            <div class="price-tag">Enquiry Now</div>
+        </div>
+
+        <div class="glass-card" onclick="openModal('Business Manager', 'Enquiry Now')">
+            <span class="card-number">03</span>
+            <div class="card-icon"><i class="fa-solid fa-briefcase"></i></div>
+            <h3>Business Manager</h3>
+            <div class="price-tag">Enquiry Now</div>
+        </div>
+
+        <div class="glass-card" onclick="openModal('SIM Card', 'Enquiry Now')">
+            <span class="card-number">04</span>
+            <div class="card-icon"><i class="fa-solid fa-sim-card"></i></div>
+            <h3>SIM Card</h3>
+            <div class="price-tag">Enquiry Now</div>
+        </div>
+
+        <div class="glass-card" onclick="openModal('Facebook Account', 'Enquiry Now')">
+            <span class="card-number">05</span>
+            <div class="card-icon"><i class="fa-brands fa-facebook"></i></div>
+            <h3>Facebook Account</h3>
+            <div class="price-tag">Enquiry Now</div>
+        </div>
+
+        <div class="glass-card" onclick="openModal('Instagram Account', 'Enquiry Now')">
+            <span class="card-number">06</span>
+            <div class="card-icon"><i class="fa-brands fa-instagram"></i></div>
+            <h3>Instagram Account</h3>
+            <div class="price-tag">Enquiry Now</div>
+        </div>
+
+        <div class="glass-card" onclick="openModal('Bank Account', 'Enquiry Now')">
+            <span class="card-number">07</span>
+            <div class="card-icon"><i class="fa-solid fa-building-columns"></i></div>
+            <h3>Bank Account</h3>
+            <div class="price-tag">Enquiry Now</div>
+        </div>
+
+        <div class="glass-card" onclick="openModal('WhatsApp API', 'Enquiry Now')">
+            <span class="card-number">08</span>
+            <div class="card-icon"><i class="fa-solid fa-code"></i></div>
+            <h3>WhatsApp API</h3>
+            <div class="price-tag">Enquiry Now</div>
+        </div>
+
+        <div class="glass-card" onclick="openModal('Snapchat Account', 'Enquiry Now')">
+            <span class="card-number">09</span>
+            <div class="card-icon"><i class="fa-brands fa-snapchat"></i></div>
+            <h3>Snapchat Account</h3>
+            <div class="price-tag">Enquiry Now</div>
+        </div>
+
+        <div class="glass-card" onclick="openModal('Landing Page', 'Enquiry Now')">
+            <span class="card-number">10</span>
+            <div class="card-icon"><i class="fa-solid fa-laptop-code"></i></div>
+            <h3>Landing Page</h3>
+            <div class="price-tag">Enquiry Now</div>
+        </div>
+
+        <div class="glass-card" onclick="openModal('Meta Ads Setup', 'Enquiry Now')">
+            <span class="card-number">11</span>
+            <div class="card-icon"><i class="fa-solid fa-rectangle-ad"></i></div>
+            <h3>Meta Ads Setup</h3>
+            <div class="price-tag">Enquiry Now</div>
+        </div>
+
+        <div class="glass-card" onclick="openModal('Agency Ad Account', 'Enquiry Now')">
+            <span class="card-number">12</span>
+            <div class="card-icon"><i class="fa-solid fa-bullhorn"></i></div>
+            <h3>Agency Ad Account</h3>
+            <div class="price-tag">Enquiry Now</div>
+        </div>
+
+        <div class="glass-card" onclick="openModal('All Social Media Accounts', 'Enquiry Now')">
+            <span class="card-number">13</span>
+            <div class="card-icon"><i class="fa-solid fa-share-nodes"></i></div>
+            <h3>All Social Media</h3>
+            <div class="price-tag">Enquiry Now</div>
+        </div>
+
+        <div class="glass-card" onclick="openModal('Verification Code / OTP', 'Enquiry Now')">
+            <span class="card-number">14</span>
+            <div class="card-icon"><i class="fa-solid fa-shield-check"></i></div>
+            <h3>Verification Code / OTP</h3>
+            <div class="price-tag">Enquiry Now</div>
+        </div>
+
+    </div>
+
+    <!-- Footer Contact -->
+    <div class="footer-cta">
+        <h2>PREMIUM SERVICES</h2>
+        <div class="support-text">
+            <i class="fa-solid fa-circle-check"></i> 24/7 ACTIVE CUSTOMER SUPPORT
+        </div>
+        <button class="contact-btn" onclick="openModal('General Query', 'Direct Contact')">
+            <i class="fa-brands fa-whatsapp"></i> CHAT ON WHATSAPP: 8797842831
+        </button>
+    </div>
+</div>
+
+<!-- Contact Modal / Popup -->
+<div class="modal-overlay" id="contactModal">
+    <div class="modal-box">
+        <div class="modal-icon">
+            <i class="fa-solid fa-circle-check"></i>
+        </div>
+        <h2>Thanks for Contacting!</h2>
+        <p>Aapne niche di gayi service select ki hai:</p>
+        
+        <div class="selected-service-info">
+            <h4 id="modalServiceName">Service Name</h4>
+            <p id="modalServicePrice" style="color: #fbbf24; margin-top: 5px; font-weight: bold;"></p>
+        </div>
+
+        <div class="modal-actions">
+            <a href="#" id="whatsappRedirectBtn" target="_blank" class="btn-proceed">
+                <i class="fa-brands fa-whatsapp"></i> Continue to WhatsApp
+            </a>
+            <button class="btn-close" onclick="closeModal()">Back to Menu</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    function openModal(serviceName, price) {
+        const modal = document.getElementById('contactModal');
+        const serviceNameElem = document.getElementById('modalServiceName');
+        const servicePriceElem = document.getElementById('modalServicePrice');
+        const whatsappBtn = document.getElementById('whatsappRedirectBtn');
+
+        serviceNameElem.innerText = serviceName;
+        servicePriceElem.innerText = price !== 'Enquiry Now' && price !== 'Direct Contact' ? 'Price: ' + price : price;
+
+        const message = `Hello, Thanks for connecting! Mujhe ${serviceName} ki service chahiye. (24/7 Support)`;
+        const encodedMessage = encodeURIComponent(message);
+        whatsappBtn.href = `https://wa.me/918797842831?text=${encodedMessage}`;
+
+        modal.classList.add('active');
+    }
+
+    function closeModal() {
+        const modal = document.getElementById('contactModal');
+        modal.classList.remove('active');
+    }
+</script>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SK Marketing Hub</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#030712;
+    color:#fff;
+    min-height:100vh;
+    padding:30px 15px;
+    overflow-x:hidden;
+}
+
+/* Background */
+
+body:before{
+    content:"";
+    position:fixed;
+    width:450px;
+    height:450px;
+    background:rgba(0,174,255,.14);
+    filter:blur(100px);
+    border-radius:50%;
+    top:-180px;
+    left:50%;
+    transform:translateX(-50%);
+    z-index:-1;
+}
+
+.container{
+    max-width:1100px;
+    margin:auto;
+}
+
+/* Header */
+
+header{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.logo{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:10px 20px;
+    border:1px solid rgba(56,189,248,.35);
+    border-radius:50px;
+    background:rgba(15,23,42,.7);
+    margin-bottom:22px;
+}
+
+.logo i{
+    color:#38bdf8;
+}
+
+.logo span{
+    font-weight:800;
+    letter-spacing:1px;
+}
+
+h1{
+    font-size:clamp(2rem,5vw,3.5rem);
+    font-weight:900;
+    background:linear-gradient(90deg,#fff,#38bdf8,#a855f7);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    margin-bottom:15px;
+}
+
+.subtitle{
+    max-width:650px;
+    margin:auto;
+    color:#94a3b8;
+    line-height:1.7;
+}
+
+.badges{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-top:22px;
+}
+
+.badge{
+    padding:9px 16px;
+    border-radius:50px;
+    background:rgba(15,23,42,.7);
+    border:1px solid rgba(255,255,255,.12);
+    font-size:.82rem;
+}
+
+.badge i{
+    color:#22c55e;
+    margin-right:5px;
+}
+
+/* Services */
+
+.services{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.card{
+    background:rgba(15,23,42,.65);
+    border:1px solid rgba(148,163,184,.15);
+    border-radius:20px;
+    padding:25px 20px;
+    text-align:center;
+    backdrop-filter:blur(15px);
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-6px);
+    border-color:#38bdf8;
+    box-shadow:0 0 30px rgba(56,189,248,.15);
+}
+
+.icon{
+    width:60px;
+    height:60px;
+    margin:0 auto 18px;
+    border-radius:17px;
+    display:grid;
+    place-items:center;
+    font-size:1.6rem;
+    background:linear-gradient(135deg,
+        rgba(56,189,248,.2),
+        rgba(168,85,247,.2)
+    );
+    color:#38bdf8;
+}
+
+.card h3{
+    margin-bottom:10px;
+    font-size:1.1rem;
+}
+
+.card p{
+    color:#94a3b8;
+    font-size:.85rem;
+    line-height:1.6;
+}
+
+.contact{
+    width:100%;
+    margin-top:18px;
+    padding:13px;
+    border:none;
+    border-radius:12px;
+    color:#fff;
+    font-weight:bold;
+    cursor:pointer;
+    background:linear-gradient(135deg,#0ea5e9,#7c3aed);
+    transition:.3s;
+}
+
+.contact:hover{
+    transform:scale(1.02);
+}
+
+/* Bottom CTA */
+
+.cta{
+    margin-top:45px;
+    padding:40px 20px;
+    text-align:center;
+    border-radius:25px;
+    background:rgba(15,23,42,.7);
+    border:1px solid rgba(56,189,248,.2);
+}
+
+.cta h2{
+    margin-bottom:10px;
+}
+
+.cta p{
+    color:#94a3b8;
+    margin-bottom:22px;
+}
+
+.whatsapp{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:15px 25px;
+    border-radius:50px;
+    text-decoration:none;
+    color:#fff;
+    font-weight:bold;
+    background:#25d366;
+    box-shadow:0 0 25px rgba(37,211,102,.25);
+}
+
+/* Review Popup */
+
+.review-popup{
+    position:fixed;
+    left:20px;
+    bottom:20px;
+    width:330px;
+    max-width:calc(100% - 40px);
+    background:rgba(15,23,42,.96);
+    border:1px solid rgba(56,189,248,.35);
+    border-radius:18px;
+    padding:17px;
+    box-shadow:0 15px 45px rgba(0,0,0,.45);
+    backdrop-filter:blur(20px);
+    transform:translateY(150px);
+    opacity:0;
+    pointer-events:none;
+    transition:.5s ease;
+    z-index:9999;
+}
+
+.review-popup.show{
+    transform:translateY(0);
+    opacity:1;
+}
+
+.review-top{
+    display:flex;
+    align-items:center;
+    gap:11px;
+}
+
+.avatar{
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    display:grid;
+    place-items:center;
+    background:linear-gradient(135deg,#38bdf8,#8b5cf6);
+}
+
+.customer-name{
+    font-weight:bold;
+    font-size:.9rem;
+}
+
+.customer-label{
+    color:#64748b;
+    font-size:.7rem;
+    margin-top:3px;
+}
+
+.stars{
+    margin-left:auto;
+    color:#fbbf24;
+    font-size:.75rem;
+}
+
+.review-text{
+    margin-top:13px;
+    color:#cbd5e1;
+    font-size:.82rem;
+    line-height:1.55;
+}
+
+.review-time{
+    margin-top:10px;
+    color:#64748b;
+    font-size:.68rem;
+}
+
+/* Mobile */
+
+@media(max-width:800px){
+
+    .services{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+@media(max-width:550px){
+
+    .services{
+        grid-template-columns:1fr;
+    }
+
+    .review-popup{
+        left:12px;
+        bottom:12px;
+        max-width:calc(100% - 24px);
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<header>
+
+    <div class="logo">
+        <i class="fa-solid fa-bolt"></i>
+        <span>SK MARKETING HUB</span>
+    </div>
+
+    <h1>Premium Digital Solutions</h1>
+
+    <p class="subtitle">
+        Professional digital marketing, advertising and technology
+        solutions designed to help businesses grow online.
+    </p>
+
+    <div class="badges">
+
+        <div class="badge">
+            <i class="fa-solid fa-circle-check"></i>
+            Trusted Service
+        </div>
+
+        <div class="badge">
+            <i class="fa-solid fa-headset"></i>
+            Customer Support
+        </div>
+
+        <div class="badge">
+            <i class="fa-solid fa-shield-halved"></i>
+            Professional Solutions
+        </div>
+
+    </div>
+
+</header>
+
+
+<div class="services">
+
+    <div class="card">
+
+        <div class="icon">
+            <i class="fa-solid fa-laptop-code"></i>
+        </div>
+
+        <h3>Landing Page</h3>
+
+        <p>
+            Modern, responsive and conversion-focused
+            landing page development.
+        </p>
+
+        <button class="contact"
+        onclick="contact('Landing Page')">
+            CONTACT NOW
+        </button>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="icon">
+            <i class="fa-brands fa-meta"></i>
+        </div>
+
+        <h3>Meta Ads Management</h3>
+
+        <p>
+            Professional campaign setup and
+            advertising management.
+        </p>
+
+        <button class="contact"
+        onclick="contact('Meta Ads Management')">
+            CONTACT NOW
+        </button>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="icon">
+            <i class="fa-brands fa-google"></i>
+        </div>
+
+        <h3>Google Ads</h3>
+
+        <p>
+            Performance-focused advertising solutions
+            for your business.
+        </p>
+
+        <button class="contact"
+        onclick="contact('Google Ads')">
+            CONTACT NOW
+        </button>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="icon">
+            <i class="fa-brands fa-whatsapp"></i>
+        </div>
+
+        <h3>WhatsApp Business</h3>
+
+        <p>
+            Business communication and customer
+            engagement solutions.
+        </p>
+
+        <button class="contact"
+        onclick="contact('WhatsApp Business')">
+            CONTACT NOW
+        </button>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="icon">
+            <i class="fa-solid fa-chart-line"></i>
+        </div>
+
+        <h3>Performance Marketing</h3>
+
+        <p>
+            Data-driven strategies focused on
+            measurable digital growth.
+        </p>
+
+        <button class="contact"
+        onclick="contact('Performance Marketing')">
+            CONTACT NOW
+        </button>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="icon">
+            <i class="fa-solid fa-palette"></i>
+        </div>
+
+        <h3>Business Branding</h3>
+
+        <p>
+            Premium branding and digital identity
+            solutions for businesses.
+        </p>
+
+        <button class="contact"
+        onclick="contact('Business Branding')">
+            CONTACT NOW
+        </button>
+
+    </div>
+
+</div>
+
+
+<div class="cta">
+
+    <h2>Let's Build Something Great</h2>
+
+    <p>
+        Contact SK Marketing Hub for your next digital project.
+    </p>
+
+    <a class="whatsapp"
+       href="https://wa.me/918797842831"
+       target="_blank">
+
+        <i class="fa-brands fa-whatsapp"></i>
+        Chat on WhatsApp
+
+    </a>
+
+</div>
+
+</div>
+
+
+<!-- CUSTOMER REVIEW POPUP -->
+
+<div class="review-popup" id="reviewPopup">
+
+    <div class="review-top">
+
+        <div class="avatar">
+            <i class="fa-solid fa-user"></i>
+        </div>
+
+        <div>
+            <div class="customer-name" id="customerName">
+                Customer
+            </div>
+
+            <div class="customer-label">
+                Customer Feedback
+            </div>
+        </div>
+
+        <div class="stars">
+            ★★★★★
+        </div>
+
+    </div>
+
+    <div class="review-text" id="reviewText">
+        Great service and professional support.
+    </div>
+
+    <div class="review-time">
+        Recently
+    </div>
+
+</div>
+
+
+<script>
+
+/*
+  IMPORTANT:
+  Replace these sample reviews with your REAL customer feedback.
+*/
+
+const reviews = [
+
+    {
+        name:"Customer",
+        text:"Great experience with the service. Professional communication and smooth support."
+    },
+
+    {
+        name:"Customer",
+        text:"The service was delivered as discussed. Really happy with the overall experience."
+    },
+
+    {
+        name:"Customer",
+        text:"Very responsive support and a professional approach from start to finish."
+    },
+
+    {
+        name:"Customer",
+        text:"Good communication and smooth service. Would definitely consider using the service again."
+    }
+
+];
+
+let reviewIndex = 0;
+
+function showReview(){
+
+    const popup = document.getElementById("reviewPopup");
+    const name = document.getElementById("customerName");
+    const text = document.getElementById("reviewText");
+
+    const review = reviews[reviewIndex];
+
+    name.innerText = review.name;
+    text.innerText = review.text;
+
+    popup.classList.add("show");
+
+    setTimeout(() => {
+        popup.classList.remove("show");
+    },5000);
+
+    reviewIndex++;
+
+    if(reviewIndex >= reviews.length){
+        reviewIndex = 0;
+    }
+
+}
+
+/* First popup after 3 seconds */
+
+setTimeout(showReview,3000);
+
+/* New popup every 8 seconds */
+
+setInterval(showReview,8000);
+
+
+/* WhatsApp */
+
+function contact(service){
+
+    const message =
+        "Hello SK Marketing Hub! I am interested in your " +
+        service +
+        " service. Please share the details.";
+
+    const url =
+        "https://wa.me/918797842831?text=" +
+        encodeURIComponent(message);
+
+    window.open(url,"_blank");
+
+}
+
+</script>
+
+</body>
+</html>
